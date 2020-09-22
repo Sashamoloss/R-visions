@@ -6,15 +6,15 @@ using UnityEngine.InputSystem; //Pour avoir le nouveau système d'inputs (une fo
 
 public class Cube_behavior : MonoBehaviour
 {
-    public Vector2 Direction; //La variable qui va changer quand on va appuyer sur les boutons
+    private Vector2 Direction; //La variable qui va changer quand on va appuyer sur les boutons
     private Controles Inputs;
-    private Rigidbody2D rigidbodyVar; //Variable dans laquelle on mettra le rigidbody
+    [SerializeField] private Rigidbody2D rigidbodyVar; //Variable dans laquelle on mettra le rigidbody, sérialisée pour l'assigner facilement
     [SerializeField] float Vitesse; //Variable ajustable pour contrôler la vitesse de déplacement
     [SerializeField] private GameObject projectile; //Variable dans laquelle on peut placer le gameobject projectile
     // Start is called before the first frame update
     void Start()
     {
-        rigidbodyVar = GetComponent<Rigidbody2D>();
+
     }
 
     // Par convention on met les inputs dans le OnEnable
@@ -49,5 +49,9 @@ public class Cube_behavior : MonoBehaviour
     {
         rigidbodyVar.AddForce(Direction * Vitesse * Time.deltaTime, ForceMode2D.Impulse); //On applique une force permanente au rigidbody, en fonction de la variable Direction
     }
-    //L'utilisation de AddForce pour le déplacement donne une inertie cheloue mais intéressante
+    
+    void OnValidate()
+    {
+        rigidbodyVar.drag = Vitesse; //Le Linear Drag sera toujours égal à la Vitesse pour éviter l'inertie
+    }
 }

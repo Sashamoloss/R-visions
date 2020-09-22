@@ -435,7 +435,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 30.09
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -518,6 +518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7e4b3ad1cebb84ea93281b232664bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: {x: 0, y: 0}
-  Vitesse: 1.58
+  rigidbodyVar: {fileID: 1465156834}
+  Vitesse: 30.09
   projectile: {fileID: 1199622190711765142, guid: 949ffb946e552944ab5850fb694c26bf, type: 3}
